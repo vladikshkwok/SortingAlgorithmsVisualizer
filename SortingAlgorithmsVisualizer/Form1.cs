@@ -84,6 +84,7 @@ namespace SortingAlgorithmsVisualizer
         private void BubbleSortButton_Click(object sender, EventArgs e)
         {
             BubbleSorting(unsortedArray);
+
         }
         private void CoctailSortButton_Click(object sender, EventArgs e)
         {
