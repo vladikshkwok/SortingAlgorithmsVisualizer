@@ -22,6 +22,8 @@ namespace SortingAlgorithmsVisualizer
         Bitmap bitmap;
         Graphics g;
         Pen pen, penCurrent;
+        System.Windows.Forms.Timer timer;
+        int timerCounter;
 
 
         public Form1()
@@ -29,6 +31,31 @@ namespace SortingAlgorithmsVisualizer
             InitializeComponent();
             GraphicsInit();
             ArrayInit();
+            TimerInit();
+        }
+        private void TimerInit()
+        {
+            timer = new System.Windows.Forms.Timer();
+            timer.Interval = 1000;
+            timer.Tick += new EventHandler(Timer_Tick);
+        }
+        private void TimerRun()
+        {
+            timerCounter = 0;
+            TimerLabel.Text = $"{timerCounter} s.";
+            timer.Start();
+        }
+        private void TimerStop()
+        {
+            timer.Stop();
+        }
+        void Timer_Tick(object sender, EventArgs e)
+        {
+           timerCounter++;
+            if (timerCounter < 60)
+                this.TimerLabel.Text = $"{timerCounter} s.";
+            else
+                this.TimerLabel.Text = $"{timerCounter/60} m. {timerCounter % 60} s.";
         }
         private void ArrayInit(int capacity=250)
         {
@@ -47,6 +74,7 @@ namespace SortingAlgorithmsVisualizer
             penCurrent.Width = 2;
             
         }
+
         private void DrawArray(int[] array, int current=-1)
         {
             g.Clear(Color.White);
@@ -68,6 +96,7 @@ namespace SortingAlgorithmsVisualizer
                 array[i] = rand.Next(1, 200);
             DrawArray(array);
         }
+
         static void Swap(int[] array, int i, int j)
         {
             int glass = array[i];
@@ -75,35 +104,37 @@ namespace SortingAlgorithmsVisualizer
             array[j] = glass;
         }
 
-        private void printArray(int[] array)
-        {
-            for (int i = 0; i < ARRLENGTH; i++)
-                Console.Write($" {array[i]}");
-            Console.WriteLine();
-        }
-
         #region ButtonsClickEvents
 
         private void BubbleSortButton_Click(object sender, EventArgs e)
         {
+            TimerRun();
             BubbleSorting(unsortedArray);
-
+            TimerStop();
         }
         private void CoctailSortButton_Click(object sender, EventArgs e)
         {
+            TimerRun();
             ShakerSorting(unsortedArray);
+            TimerStop();
         }
         private void GnomeSortingButton_Click(object sender, EventArgs e)
         {
+            TimerRun();
             GnomeSorting(unsortedArray);
+            TimerStop();
         }
         private void MergeSortingButton_Click(object sender, EventArgs e)
         {
+            TimerRun();
             MergeSort(unsortedArray, 0, ARRLENGTH-1);
+            TimerStop();
         }
         private void SelectionSortingButton_Click(object sender, EventArgs e)
         {
+            TimerRun();
             SelectionSorting(unsortedArray);
+            TimerStop();
         }
         private void OKButton_Click(object sender, EventArgs e)
         {
@@ -153,8 +184,8 @@ namespace SortingAlgorithmsVisualizer
                     if (array[i] > array[j])
                     {
                         DrawArray(array, j);
-                        Swap(array, i, j);
-                    }
+                        Swap(array, i, j); 
+                    }                   
                 }
             }
             DrawArray(array);
@@ -287,7 +318,5 @@ namespace SortingAlgorithmsVisualizer
         }
 
         #endregion
-
-
     }
 }

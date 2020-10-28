@@ -43,6 +43,7 @@
             this.SelectionSortingButton = new System.Windows.Forms.Button();
             this.ArrayCapacitySetter = new System.Windows.Forms.TextBox();
             this.OKButton = new System.Windows.Forms.Button();
+            this.TimerLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -164,11 +165,21 @@
             this.OKButton.UseVisualStyleBackColor = true;
             this.OKButton.Click += new System.EventHandler(this.OKButton_Click);
             // 
+            // TimerLabel
+            // 
+            this.TimerLabel.AutoSize = true;
+            this.TimerLabel.BackColor = System.Drawing.Color.White;
+            this.TimerLabel.Location = new System.Drawing.Point(27, 97);
+            this.TimerLabel.Name = "TimerLabel";
+            this.TimerLabel.Size = new System.Drawing.Size(0, 13);
+            this.TimerLabel.TabIndex = 10;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.TimerLabel);
             this.Controls.Add(this.OKButton);
             this.Controls.Add(this.ArrayCapacitySetter);
             this.Controls.Add(this.SelectionSortingButton);
@@ -207,6 +218,7 @@
         private System.Windows.Forms.Button SelectionSortingButton;
         private System.Windows.Forms.TextBox ArrayCapacitySetter;
         private System.Windows.Forms.Button OKButton;
+        private System.Windows.Forms.Label TimerLabel;
     }
 }
 
