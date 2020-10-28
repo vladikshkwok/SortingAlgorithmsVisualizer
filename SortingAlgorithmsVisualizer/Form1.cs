@@ -1,15 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Globalization;
-using System.Linq;
-using System.Media;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SortingAlgorithmsVisualizer
@@ -18,6 +8,7 @@ namespace SortingAlgorithmsVisualizer
     {
         int ARRLENGTH = 250;
         int[] unsortedArray;
+        int center;
 
         Bitmap bitmap;
         Graphics g;
@@ -72,12 +63,11 @@ namespace SortingAlgorithmsVisualizer
             penCurrent = new Pen(Color.Red);
             pen.Width = 2;
             penCurrent.Width = 2;
-            
+            center = (int)(pictureBox1.Width / 2 - ARRLENGTH * 1.5);
         }
 
         private void DrawArray(int[] array, int current=-1)
         {
-            int center = (int)(pictureBox1.Width / 2 - ARRLENGTH*1.5);
             g.Clear(Color.White);
             for (int i = 0, j = 0; i < ARRLENGTH; i++, j += 2) {
                 if (i != current)
@@ -147,6 +137,7 @@ namespace SortingAlgorithmsVisualizer
         private void OKButton_Click(object sender, EventArgs e)
         {
             ARRLENGTH = Convert.ToInt32(ArrayCapacitySetter.Text);
+            center = (int)(pictureBox1.Width / 2 - ARRLENGTH * 1.5);
             ArrayInit(ARRLENGTH);
             OKButton.Enabled = true;
         }
