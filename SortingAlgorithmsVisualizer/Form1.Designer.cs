@@ -44,15 +44,18 @@
             this.ArrayCapacitySetter = new System.Windows.Forms.TextBox();
             this.OKButton = new System.Windows.Forms.Button();
             this.TimerLabel = new System.Windows.Forms.Label();
+            this.HeapSortButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Location = new System.Drawing.Point(12, 79);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(776, 359);
+            this.pictureBox1.Size = new System.Drawing.Size(865, 359);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
@@ -72,7 +75,7 @@
             this.массивToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(889, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -147,17 +150,17 @@
             // ArrayCapacitySetter
             // 
             this.ArrayCapacitySetter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ArrayCapacitySetter.Location = new System.Drawing.Point(590, 4);
+            this.ArrayCapacitySetter.Location = new System.Drawing.Point(679, 4);
             this.ArrayCapacitySetter.Name = "ArrayCapacitySetter";
             this.ArrayCapacitySetter.Size = new System.Drawing.Size(198, 20);
             this.ArrayCapacitySetter.TabIndex = 7;
             this.ArrayCapacitySetter.Tag = "";
-            this.ArrayCapacitySetter.Text = "Введите кол-во до 254 и нажмите ОК";
+            this.ArrayCapacitySetter.Text = "Введите кол-во до 280 и нажмите ОК";
             this.ArrayCapacitySetter.TextChanged += new System.EventHandler(this.ArrayCapacitySetter_TextChanged);
             // 
             // OKButton
             // 
-            this.OKButton.Location = new System.Drawing.Point(705, 31);
+            this.OKButton.Location = new System.Drawing.Point(794, 31);
             this.OKButton.Name = "OKButton";
             this.OKButton.Size = new System.Drawing.Size(83, 42);
             this.OKButton.TabIndex = 8;
@@ -174,11 +177,22 @@
             this.TimerLabel.Size = new System.Drawing.Size(0, 13);
             this.TimerLabel.TabIndex = 10;
             // 
+            // HeapSortButton
+            // 
+            this.HeapSortButton.Location = new System.Drawing.Point(652, 31);
+            this.HeapSortButton.Name = "HeapSortButton";
+            this.HeapSortButton.Size = new System.Drawing.Size(122, 42);
+            this.HeapSortButton.TabIndex = 11;
+            this.HeapSortButton.Text = "Сортировка кучей";
+            this.HeapSortButton.UseVisualStyleBackColor = true;
+            this.HeapSortButton.Click += new System.EventHandler(this.HeapSortButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(889, 450);
+            this.Controls.Add(this.HeapSortButton);
             this.Controls.Add(this.TimerLabel);
             this.Controls.Add(this.OKButton);
             this.Controls.Add(this.ArrayCapacitySetter);
@@ -219,6 +233,7 @@
         private System.Windows.Forms.TextBox ArrayCapacitySetter;
         private System.Windows.Forms.Button OKButton;
         private System.Windows.Forms.Label TimerLabel;
+        private System.Windows.Forms.Button HeapSortButton;
     }
 }
 
