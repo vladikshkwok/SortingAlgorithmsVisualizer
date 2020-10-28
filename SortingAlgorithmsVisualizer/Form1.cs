@@ -45,6 +45,7 @@ namespace SortingAlgorithmsVisualizer
             penCurrent = new Pen(Color.Red);
             pen.Width = 2;
             penCurrent.Width = 2;
+            
         }
         private void DrawArray(int[] array, int current=-1)
         {
@@ -56,6 +57,8 @@ namespace SortingAlgorithmsVisualizer
                     g.DrawLine(penCurrent, new Point(i + 15 + j, pictureBox1.Height), new Point(i + 15 + j, pictureBox1.Height - array[i]));
             }
             pictureBox1.Refresh();
+            Application.DoEvents();
+
         }
 
         private void FillArray(int[] array)
