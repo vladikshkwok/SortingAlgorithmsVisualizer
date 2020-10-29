@@ -114,7 +114,7 @@ namespace SortingAlgorithmsVisualizer
         {
             Random rand = new Random();
             for (int i = 0; i < ARRLENGTH; i++)
-                array[i] = rand.Next(1, 200);
+                array[i] = rand.Next(1, 350);
             DrawArray(array);
         }
 

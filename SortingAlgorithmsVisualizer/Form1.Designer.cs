@@ -171,9 +171,10 @@
             // 
             this.TimerLabel.AutoSize = true;
             this.TimerLabel.BackColor = System.Drawing.Color.White;
-            this.TimerLabel.Location = new System.Drawing.Point(27, 97);
+            this.TimerLabel.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TimerLabel.Location = new System.Drawing.Point(12, 79);
             this.TimerLabel.Name = "TimerLabel";
-            this.TimerLabel.Size = new System.Drawing.Size(0, 13);
+            this.TimerLabel.Size = new System.Drawing.Size(0, 16);
             this.TimerLabel.TabIndex = 10;
             // 
             // HeapSortButton
@@ -211,9 +212,9 @@
             this.CapacityLabel.AutoSize = true;
             this.CapacityLabel.Location = new System.Drawing.Point(858, 60);
             this.CapacityLabel.Name = "CapacityLabel";
-            this.CapacityLabel.Size = new System.Drawing.Size(35, 13);
+            this.CapacityLabel.Size = new System.Drawing.Size(25, 13);
             this.CapacityLabel.TabIndex = 14;
-            this.CapacityLabel.Text = "label2";
+            this.CapacityLabel.Text = "250";
             // 
             // Form1
             // 
