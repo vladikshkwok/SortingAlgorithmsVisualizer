@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace SortingAlgorithmsVisualizer
@@ -9,13 +10,13 @@ namespace SortingAlgorithmsVisualizer
         int ARRLENGTH = 250;
         int[] unsortedArray;
         int center;
+        static bool isPaused = false;
 
         Bitmap bitmap;
         Graphics g;
         Pen pen, penCurrent;
         System.Windows.Forms.Timer timer;
         int timerCounter;
-
 
         public Form1()
         {
@@ -29,6 +30,10 @@ namespace SortingAlgorithmsVisualizer
             timer = new System.Windows.Forms.Timer();
             timer.Interval = 1000;
             timer.Tick += new EventHandler(Timer_Tick);
+        }
+        private void Unstop()
+        {
+            isPaused = false;
         }
         private void TimerRun()
         {
@@ -166,6 +171,10 @@ namespace SortingAlgorithmsVisualizer
             g.Clear(Color.White);
             pictureBox1.Refresh();
         }
+        private void StopToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            isPaused = true;
+        }
 
         private void FillRandToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -179,16 +188,18 @@ namespace SortingAlgorithmsVisualizer
         {
             for (int i = 0; i < ARRLENGTH; i++)
             {
-                for (int j = i + 1; j < ARRLENGTH; j++)
+                if (isPaused) break;
+                for (int j = 0; j < ARRLENGTH-i-1; j++)
                 {
-                    if (array[i] > array[j])
+                    if (array[j] > array[j+1])
                     {
                         DrawArray(array, j);
-                        Swap(array, i, j); 
+                        Swap(array, j, j+1); 
                     }                   
                 }
             }
             DrawArray(array);
+            Unstop();
         }
 
         private void ShakerSorting(int[] array)
@@ -198,6 +209,7 @@ namespace SortingAlgorithmsVisualizer
                 
             while (left < right)
             {
+                if (isPaused) break;
                 for (int i = left; i < right; i++)
                 {
                     if (array[i] > array[i + 1])
@@ -219,6 +231,7 @@ namespace SortingAlgorithmsVisualizer
                 left++;
             }
             DrawArray(array);
+            Unstop();
         }
 
         private void GnomeSorting(int[] array)
@@ -226,6 +239,7 @@ namespace SortingAlgorithmsVisualizer
             int i = 1, j = 2;
             while(i < ARRLENGTH)
             {
+                if (isPaused) break;
                 if (array[i-1] < array[i])
                 {
                     i = j;
@@ -244,6 +258,7 @@ namespace SortingAlgorithmsVisualizer
                 }
             }
             DrawArray(array);
+            Unstop();
         }
 
         private void Merge(int[] array, int left, int middle, int right)
@@ -258,6 +273,7 @@ namespace SortingAlgorithmsVisualizer
             int j = 0;
             for (int k = left; k < right + 1; k++)
             {
+                if (isPaused) break;
                 if (i == leftArray.Length)
                 {
                     array[k] = rightArray[j];
@@ -289,7 +305,6 @@ namespace SortingAlgorithmsVisualizer
         {
             if (left < right)
             {
-                
                 int middle = (left + right) / 2;
                 DrawArray(array);
                 MergeSort(array, left, middle);
@@ -297,12 +312,14 @@ namespace SortingAlgorithmsVisualizer
                 
                 Merge(array, left, middle, right);
             }
-            
+            Unstop();
+
         }
         private void SelectionSorting(int[] array)
         {
             for (int i = 0; i < ARRLENGTH; i++)
             {
+                if (isPaused) break;
                 int min = i;
                 for (int j = i + 1; j < ARRLENGTH; j++)
                 {
@@ -315,6 +332,7 @@ namespace SortingAlgorithmsVisualizer
                 DrawArray(array, min);
             }
             DrawArray(array);
+            Unstop();
         }
 
         public void HeapSort(int[] arr)
@@ -323,11 +341,15 @@ namespace SortingAlgorithmsVisualizer
 
             // Build heap (rearrange array) 
             for (int i = n / 2 - 1; i >= 0; i--)
+            {
                 heapify(arr, n, i);
+                if (isPaused) break;
+            }
 
             // One by one extract an element from heap 
             for (int i = n - 1; i > 0; i--)
             {
+                if (isPaused) break;
                 // Move current root to end 
                 int temp = arr[0];
                 arr[0] = arr[i];
@@ -336,7 +358,12 @@ namespace SortingAlgorithmsVisualizer
                 // call max heapify on the reduced heap 
                 heapify(arr, i, 0);
             }
+            DrawArray(arr);
+            Unstop();
         }
+
+
+
 
         // To heapify a subtree rooted with node i which is 
         // an index in arr[]. n is size of heap 

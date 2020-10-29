@@ -36,6 +36,8 @@
             this.массивToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ClearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.заполнитьРандомноToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.приложениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.StopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.CoctailSortButton = new System.Windows.Forms.Button();
             this.GnomeSortingButton = new System.Windows.Forms.Button();
@@ -72,7 +74,8 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.массивToolStripMenuItem});
+            this.массивToolStripMenuItem,
+            this.приложениеToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(889, 24);
@@ -101,6 +104,21 @@
             this.заполнитьРандомноToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
             this.заполнитьРандомноToolStripMenuItem.Text = "Заполнить рандомно";
             this.заполнитьРандомноToolStripMenuItem.Click += new System.EventHandler(this.FillRandToolStripMenuItem_Click);
+            // 
+            // приложениеToolStripMenuItem
+            // 
+            this.приложениеToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.StopToolStripMenuItem});
+            this.приложениеToolStripMenuItem.Name = "приложениеToolStripMenuItem";
+            this.приложениеToolStripMenuItem.Size = new System.Drawing.Size(91, 20);
+            this.приложениеToolStripMenuItem.Text = "Приложение";
+            // 
+            // StopToolStripMenuItem
+            // 
+            this.StopToolStripMenuItem.Name = "StopToolStripMenuItem";
+            this.StopToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.StopToolStripMenuItem.Text = "Остановить";
+            this.StopToolStripMenuItem.Click += new System.EventHandler(this.StopToolStripMenuItem_Click);
             // 
             // contextMenuStrip1
             // 
@@ -234,6 +252,8 @@
         private System.Windows.Forms.Button OKButton;
         private System.Windows.Forms.Label TimerLabel;
         private System.Windows.Forms.Button HeapSortButton;
+        private System.Windows.Forms.ToolStripMenuItem приложениеToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem StopToolStripMenuItem;
     }
 }
 
