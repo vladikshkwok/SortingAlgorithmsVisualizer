@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
@@ -24,6 +25,30 @@ namespace SortingAlgorithmsVisualizer
             GraphicsInit();
             ArrayInit();
             TimerInit();
+        }
+        
+        private void BlockButtons(bool block)
+        {
+            if (block)
+            {
+                BubbleSortButton.Enabled = false;
+                CoctailSortButton.Enabled = false;
+                GnomeSortingButton.Enabled = false;
+                MergeSortingButton.Enabled = false;
+                SelectionSortingButton.Enabled = false;
+                HeapSortButton.Enabled = false;
+                trackBar1.Enabled = false;
+            }
+            else
+            {
+                BubbleSortButton.Enabled = true;
+                CoctailSortButton.Enabled = true;
+                GnomeSortingButton.Enabled = true;
+                MergeSortingButton.Enabled = true;
+                SelectionSortingButton.Enabled = true;
+                HeapSortButton.Enabled = true;
+                trackBar1.Enabled = true;
+            }
         }
         private void TimerInit()
         {
@@ -55,12 +80,12 @@ namespace SortingAlgorithmsVisualizer
         }
         private void ArrayInit(int capacity=250)
         {
-            OKButton.Enabled = false;
             unsortedArray = new int[capacity];
             FillArray(unsortedArray);
         }
         private void GraphicsInit()
         {
+            CapacityLabel.Text = ARRLENGTH.ToString();
             bitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height);
             pictureBox1.Image = bitmap;
             g = Graphics.FromImage(pictureBox1.Image);
@@ -105,63 +130,64 @@ namespace SortingAlgorithmsVisualizer
         private void BubbleSortButton_Click(object sender, EventArgs e)
         {
             TimerRun();
+            BlockButtons(true);
             BubbleSorting(unsortedArray);
             TimerStop();
+            BlockButtons(false);
         }
         private void CoctailSortButton_Click(object sender, EventArgs e)
         {
             TimerRun();
+            BlockButtons(true);
             ShakerSorting(unsortedArray);
             TimerStop();
+            BlockButtons(false);
         }
         private void GnomeSortingButton_Click(object sender, EventArgs e)
         {
             TimerRun();
+            BlockButtons(true);
             GnomeSorting(unsortedArray);
             TimerStop();
+            BlockButtons(false);
         }
         private void MergeSortingButton_Click(object sender, EventArgs e)
         {
             TimerRun();
+            BlockButtons(true);
             MergeSort(unsortedArray, 0, ARRLENGTH-1);
             TimerStop();
+            BlockButtons(false);
         }
         private void SelectionSortingButton_Click(object sender, EventArgs e)
         {
             TimerRun();
+            BlockButtons(true);
             SelectionSorting(unsortedArray);
             TimerStop();
+            BlockButtons(false);
         }
         private void HeapSortButton_Click(object sender, EventArgs e)
         {
             TimerRun();
+            BlockButtons(true);
             HeapSort(unsortedArray);
             TimerStop();
+            BlockButtons(false);
         }
 
-        private void OKButton_Click(object sender, EventArgs e)
+        private void trackBar1_Scroll(object sender, EventArgs e)
         {
-            ARRLENGTH = Convert.ToInt32(ArrayCapacitySetter.Text);
+            ARRLENGTH = trackBar1.Value;
             center = (int)(pictureBox1.Width / 2 - ARRLENGTH * 1.5);
+            CapacityLabel.Text = ARRLENGTH.ToString();
             ArrayInit(ARRLENGTH);
-            OKButton.Enabled = true;
         }
 
-
-        private void ArrayCapacitySetter_TextChanged(object sender, EventArgs e)
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
-            try
-            {
-                if (Convert.ToInt32(ArrayCapacitySetter.Text) <= 0 || Convert.ToInt32(ArrayCapacitySetter.Text) > 280)
-                    OKButton.Enabled = false;
-                else
-                {
-                    OKButton.Enabled = true;
-                }
-            }
-            catch (Exception er) { OKButton.Enabled = false; }
+            isPaused = true;
         }
-
 
         #endregion
 
@@ -361,8 +387,6 @@ namespace SortingAlgorithmsVisualizer
             DrawArray(arr);
             Unstop();
         }
-
-
 
 
         // To heapify a subtree rooted with node i which is 

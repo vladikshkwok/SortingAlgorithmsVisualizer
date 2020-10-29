@@ -43,12 +43,14 @@
             this.GnomeSortingButton = new System.Windows.Forms.Button();
             this.MergeSortingButton = new System.Windows.Forms.Button();
             this.SelectionSortingButton = new System.Windows.Forms.Button();
-            this.ArrayCapacitySetter = new System.Windows.Forms.TextBox();
-            this.OKButton = new System.Windows.Forms.Button();
             this.TimerLabel = new System.Windows.Forms.Label();
             this.HeapSortButton = new System.Windows.Forms.Button();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.label1 = new System.Windows.Forms.Label();
+            this.CapacityLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -65,7 +67,7 @@
             // 
             this.BubbleSortButton.Location = new System.Drawing.Point(12, 31);
             this.BubbleSortButton.Name = "BubbleSortButton";
-            this.BubbleSortButton.Size = new System.Drawing.Size(122, 42);
+            this.BubbleSortButton.Size = new System.Drawing.Size(120, 42);
             this.BubbleSortButton.TabIndex = 1;
             this.BubbleSortButton.Text = "Сортировка пузырьком";
             this.BubbleSortButton.UseVisualStyleBackColor = true;
@@ -116,7 +118,7 @@
             // StopToolStripMenuItem
             // 
             this.StopToolStripMenuItem.Name = "StopToolStripMenuItem";
-            this.StopToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.StopToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.StopToolStripMenuItem.Text = "Остановить";
             this.StopToolStripMenuItem.Click += new System.EventHandler(this.StopToolStripMenuItem_Click);
             // 
@@ -127,9 +129,9 @@
             // 
             // CoctailSortButton
             // 
-            this.CoctailSortButton.Location = new System.Drawing.Point(140, 31);
+            this.CoctailSortButton.Location = new System.Drawing.Point(138, 31);
             this.CoctailSortButton.Name = "CoctailSortButton";
-            this.CoctailSortButton.Size = new System.Drawing.Size(122, 42);
+            this.CoctailSortButton.Size = new System.Drawing.Size(120, 42);
             this.CoctailSortButton.TabIndex = 3;
             this.CoctailSortButton.Text = "Сортировка перемешиванием";
             this.CoctailSortButton.UseVisualStyleBackColor = true;
@@ -137,9 +139,9 @@
             // 
             // GnomeSortingButton
             // 
-            this.GnomeSortingButton.Location = new System.Drawing.Point(268, 31);
+            this.GnomeSortingButton.Location = new System.Drawing.Point(264, 31);
             this.GnomeSortingButton.Name = "GnomeSortingButton";
-            this.GnomeSortingButton.Size = new System.Drawing.Size(122, 42);
+            this.GnomeSortingButton.Size = new System.Drawing.Size(120, 42);
             this.GnomeSortingButton.TabIndex = 4;
             this.GnomeSortingButton.Text = "Gnome сортировка (Stupid sort)";
             this.GnomeSortingButton.UseVisualStyleBackColor = true;
@@ -147,9 +149,9 @@
             // 
             // MergeSortingButton
             // 
-            this.MergeSortingButton.Location = new System.Drawing.Point(396, 31);
+            this.MergeSortingButton.Location = new System.Drawing.Point(390, 31);
             this.MergeSortingButton.Name = "MergeSortingButton";
-            this.MergeSortingButton.Size = new System.Drawing.Size(122, 42);
+            this.MergeSortingButton.Size = new System.Drawing.Size(120, 42);
             this.MergeSortingButton.TabIndex = 5;
             this.MergeSortingButton.Text = "Сортировка слиянием";
             this.MergeSortingButton.UseVisualStyleBackColor = true;
@@ -157,34 +159,13 @@
             // 
             // SelectionSortingButton
             // 
-            this.SelectionSortingButton.Location = new System.Drawing.Point(524, 31);
+            this.SelectionSortingButton.Location = new System.Drawing.Point(516, 31);
             this.SelectionSortingButton.Name = "SelectionSortingButton";
-            this.SelectionSortingButton.Size = new System.Drawing.Size(122, 42);
+            this.SelectionSortingButton.Size = new System.Drawing.Size(120, 42);
             this.SelectionSortingButton.TabIndex = 6;
             this.SelectionSortingButton.Text = "Сортировка выбором";
             this.SelectionSortingButton.UseVisualStyleBackColor = true;
             this.SelectionSortingButton.Click += new System.EventHandler(this.SelectionSortingButton_Click);
-            // 
-            // ArrayCapacitySetter
-            // 
-            this.ArrayCapacitySetter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ArrayCapacitySetter.Location = new System.Drawing.Point(679, 4);
-            this.ArrayCapacitySetter.Name = "ArrayCapacitySetter";
-            this.ArrayCapacitySetter.Size = new System.Drawing.Size(198, 20);
-            this.ArrayCapacitySetter.TabIndex = 7;
-            this.ArrayCapacitySetter.Tag = "";
-            this.ArrayCapacitySetter.Text = "Введите кол-во до 280 и нажмите ОК";
-            this.ArrayCapacitySetter.TextChanged += new System.EventHandler(this.ArrayCapacitySetter_TextChanged);
-            // 
-            // OKButton
-            // 
-            this.OKButton.Location = new System.Drawing.Point(794, 31);
-            this.OKButton.Name = "OKButton";
-            this.OKButton.Size = new System.Drawing.Size(83, 42);
-            this.OKButton.TabIndex = 8;
-            this.OKButton.Text = "OK";
-            this.OKButton.UseVisualStyleBackColor = true;
-            this.OKButton.Click += new System.EventHandler(this.OKButton_Click);
             // 
             // TimerLabel
             // 
@@ -197,23 +178,53 @@
             // 
             // HeapSortButton
             // 
-            this.HeapSortButton.Location = new System.Drawing.Point(652, 31);
+            this.HeapSortButton.Location = new System.Drawing.Point(642, 31);
             this.HeapSortButton.Name = "HeapSortButton";
-            this.HeapSortButton.Size = new System.Drawing.Size(122, 42);
+            this.HeapSortButton.Size = new System.Drawing.Size(120, 42);
             this.HeapSortButton.TabIndex = 11;
             this.HeapSortButton.Text = "Сортировка кучей";
             this.HeapSortButton.UseVisualStyleBackColor = true;
             this.HeapSortButton.Click += new System.EventHandler(this.HeapSortButton_Click);
+            // 
+            // trackBar1
+            // 
+            this.trackBar1.Location = new System.Drawing.Point(773, 28);
+            this.trackBar1.Maximum = 280;
+            this.trackBar1.Minimum = 1;
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(104, 45);
+            this.trackBar1.TabIndex = 12;
+            this.trackBar1.Value = 140;
+            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(770, 60);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(93, 13);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Размер массива";
+            // 
+            // CapacityLabel
+            // 
+            this.CapacityLabel.AutoSize = true;
+            this.CapacityLabel.Location = new System.Drawing.Point(858, 60);
+            this.CapacityLabel.Name = "CapacityLabel";
+            this.CapacityLabel.Size = new System.Drawing.Size(35, 13);
+            this.CapacityLabel.TabIndex = 14;
+            this.CapacityLabel.Text = "label2";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(889, 450);
+            this.Controls.Add(this.CapacityLabel);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.trackBar1);
             this.Controls.Add(this.HeapSortButton);
             this.Controls.Add(this.TimerLabel);
-            this.Controls.Add(this.OKButton);
-            this.Controls.Add(this.ArrayCapacitySetter);
             this.Controls.Add(this.SelectionSortingButton);
             this.Controls.Add(this.MergeSortingButton);
             this.Controls.Add(this.GnomeSortingButton);
@@ -227,9 +238,11 @@
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Визуализатор алгоритмов сортировки";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -248,12 +261,13 @@
         private System.Windows.Forms.Button GnomeSortingButton;
         private System.Windows.Forms.Button MergeSortingButton;
         private System.Windows.Forms.Button SelectionSortingButton;
-        private System.Windows.Forms.TextBox ArrayCapacitySetter;
-        private System.Windows.Forms.Button OKButton;
         private System.Windows.Forms.Label TimerLabel;
         private System.Windows.Forms.Button HeapSortButton;
         private System.Windows.Forms.ToolStripMenuItem приложениеToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem StopToolStripMenuItem;
+        private System.Windows.Forms.TrackBar trackBar1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label CapacityLabel;
     }
 }
 
